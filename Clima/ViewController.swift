@@ -47,7 +47,8 @@ class ViewController: UIViewController {
             self.recuperarClimaDeJson(nsdata)
             
             //Comunica al hilo principal que ya hay datos
-           /* dispatch_async(dispatch_get_main_queue(), { println(self.clima!); self.labelClima.text = self.clima!} )*/
+           dispatch_async(dispatch_get_main_queue(), { println(self.clima!)
+            self.labelClima.text = self.clima!} )
             
         })
         
@@ -69,9 +70,10 @@ class ViewController: UIViewController {
         
         //Itinerar por todo nuestro array de jsons de nuestra respuesta al servicion web
         jsonArray.enumerateObjectsUsingBlock({ (model, index, stop) -> Void in
-            let clima = model["description"] as? String
+            /*let clima = model["description"] as? String
             println(clima)
-            self.labelClima.text = clima
+            self.labelClima.text = clima*/
+            self.clima = model["description"] as? String
         });
         }
     }
