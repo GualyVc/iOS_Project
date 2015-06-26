@@ -55,15 +55,6 @@
                                     <rect key="frame" x="42" y="391" width="296" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7W-aA-SKG">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.10196078431372549" green="0.38823529411764707" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="8" y="353" width="296" height="21"/>
-                                </variation>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kX-NG-4ya">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="0.34000000000000002" colorSpace="deviceRGB"/>
@@ -74,6 +65,24 @@
                                     <rect key="frame" x="42" y="185" width="296" height="30"/>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7W-aA-SKG">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.38823529411764707" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="8" y="353" width="296" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduzca una ciudad:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSQ-w1-14c">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.090196078431372548" green="0.19607843137254902" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="151" width="161" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -82,8 +91,9 @@
                                 <exclude reference="5wF-jp-hDz"/>
                                 <exclude reference="NHu-uy-jnp"/>
                                 <exclude reference="5u9-xc-ePz"/>
-                                <exclude reference="l7W-aA-SKG"/>
                                 <exclude reference="3kX-NG-4ya"/>
+                                <exclude reference="l7W-aA-SKG"/>
+                                <exclude reference="hSQ-w1-14c"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -92,8 +102,9 @@
                                 <include reference="5wF-jp-hDz"/>
                                 <include reference="NHu-uy-jnp"/>
                                 <include reference="5u9-xc-ePz"/>
-                                <include reference="l7W-aA-SKG"/>
                                 <include reference="3kX-NG-4ya"/>
+                                <include reference="l7W-aA-SKG"/>
+                                <include reference="hSQ-w1-14c"/>
                             </mask>
                         </variation>
                     </view>
