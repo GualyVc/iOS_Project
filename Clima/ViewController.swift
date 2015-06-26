@@ -12,24 +12,29 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var cajadeTexto: UITextField!
     
+    @IBOutlet weak var labelLugar: UILabel!
     @IBOutlet weak var labelClima: UILabel!
     var clima:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        /*self.view.backgroundColor = UIColor(patternImage: UIImage(named:"Wall.png")!)*/
+        
     }
     
     
     @IBAction func iniciarWebServiceCall(sender: AnyObject) {
         println("Mi Lugar: \(cajadeTexto.text)")
+        labelLugar.text = cajadeTexto.text+":"
+        cajadeTexto.text = ""
+        cajadeTexto.resignFirstResponder()
+        
         llamadaWebService()
     }
     
     func llamadaWebService(){
         
-        let urlPath = "http://api.openweathermap.org/data/2.5/weather?q=\(cajadeTexto.text)"+",es&lang=sp"
+        let urlPath = "http://api.openweathermap.org/data/2.5/weather?q=\(cajadeTexto.text)"+"&lang=sp"
         
         let url = NSURL(string: urlPath)
         
