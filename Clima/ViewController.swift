@@ -28,8 +28,9 @@ class ViewController: UIViewController {
         
         cajadeTexto.resignFirstResponder()
         labelInfo.text = "\(cajadeTexto.text)"+" esta con:"
+       
         cajadeTexto.text = ""
-        
+
         
     }
     
@@ -45,22 +46,30 @@ class ViewController: UIViewController {
             //Dentro el hilo secundario
             
             if (error != nil){
-                //Imprime esto si es que error no esta vacio
+                //Imprime si error no esta vacio
                 println(error.localizedDescription)
+                self.cajadeTexto.resignFirstResponder()
+                self.labelInfo.text = "El resultado no esta disponible o no existe"
+            }else{
+                var nsdata: NSData = NSData(data: data)
+                println(nsdata)
+                self.recuperarClimaDeJson(nsdata)
+                self.next()
             }
-            
-            var nsdata: NSData = NSData(data: data)
-            println(nsdata)
-            self.recuperarClimaDeJson(nsdata)
-            
-            //Comunica al hilo principal que ya hay datos
-            dispatch_async(dispatch_get_main_queue(), { println(self.clima!)
-                self.labelClima.text = self.clima!} )
-            
         })
         
         task.resume()
     }
+    
+    func next() {
+        //Comunica al hilo principal que ya hay datos
+        dispatch_async(dispatch_get_main_queue(), { println(self.clima!)
+            self.labelClima.text = self.clima!} )
+        
+        
+
+    }
+    
     
     
     func recuperarClimaDeJson(nsdata:NSData){
@@ -69,13 +78,13 @@ class ViewController: UIViewController {
         
         println(jsonCompleto)
         
-        //Buscamos en el json "weather"
+        //Buscamos en el json la info sobre "weather"
         let arregloJsonWeather = jsonCompleto["weather"]
         
         //Ponemos ? porque no sabemos si nos va delvolver algun valor o algo
         if let jsonArray = arregloJsonWeather as? NSArray{
             
-            //Itinerar por todo nuestro array de jsons de nuestra respuesta al servicion web
+            //Itinera por todo el array de jsons de la respuesta al servicion web
             jsonArray.enumerateObjectsUsingBlock({ (model, index, stop) -> Void in
                 /*let clima = model["description"] as? String
                 println(clima)
