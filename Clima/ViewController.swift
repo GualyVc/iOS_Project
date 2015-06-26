@@ -9,27 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var cajadeTexto: UITextField!
     
+    @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var labelClima: UILabel!
     var clima:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        /*self.view.backgroundColor = UIColor(patternImage: UIImage(named:"Wall.png")!)*/
     }
     
     
     @IBAction func iniciarWebServiceCall(sender: AnyObject) {
         println("Mi Lugar: \(cajadeTexto.text)")
         llamadaWebService()
+        
+        cajadeTexto.resignFirstResponder()
+        labelInfo.text = "\(cajadeTexto.text)"+" esta con:"
+        cajadeTexto.text = ""
+        
+        
     }
     
     func llamadaWebService(){
         
-        let urlPath = "http://api.openweathermap.org/data/2.5/weather?q=\(cajadeTexto.text)"+",es&lang=sp"
+        let urlPath = "http://api.openweathermap.org/data/2.5/weather?q=\(cajadeTexto.text)"+"&lang=sp"
         
         let url = NSURL(string: urlPath)
         
@@ -48,8 +54,8 @@ class ViewController: UIViewController {
             self.recuperarClimaDeJson(nsdata)
             
             //Comunica al hilo principal que ya hay datos
-           dispatch_async(dispatch_get_main_queue(), { println(self.clima!)
-            self.labelClima.text = self.clima!} )
+            dispatch_async(dispatch_get_main_queue(), { println(self.clima!)
+                self.labelClima.text = self.clima!} )
             
         })
         
@@ -68,22 +74,22 @@ class ViewController: UIViewController {
         
         //Ponemos ? porque no sabemos si nos va delvolver algun valor o algo
         if let jsonArray = arregloJsonWeather as? NSArray{
-        
-        //Itinerar por todo nuestro array de jsons de nuestra respuesta al servicion web
-        jsonArray.enumerateObjectsUsingBlock({ (model, index, stop) -> Void in
-            /*let clima = model["description"] as? String
-            println(clima)
-            self.labelClima.text = clima*/
-            self.clima = model["description"] as? String
-        });
+            
+            //Itinerar por todo nuestro array de jsons de nuestra respuesta al servicion web
+            jsonArray.enumerateObjectsUsingBlock({ (model, index, stop) -> Void in
+                /*let clima = model["description"] as? String
+                println(clima)
+                self.labelClima.text = clima*/
+                self.clima = model["description"] as? String
+            });
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
